@@ -24,11 +24,29 @@ public class Main {
 		
 		for (Integer numero : lista) {
 			if (numero <= 100) {
-				System.out.println(numero / 100);
-				if (numero / 100 == 1) 
-				{}
+				boolean bandera = false;
+				int nuevonumero = 0;
+				int centena;
+				int decena;
+				int unidad;
 				
-				NuevaLista.add(0, numero);
+				if ((centena = numero / 100) < S) {
+					nuevonumero = centena;
+					bandera = true;
+				}
+					
+				if ((decena = (numero - (centena * 100)) / 10) < S) {
+					nuevonumero = (nuevonumero * 10) + decena;
+					bandera = true;
+				}
+				
+				if ((unidad = numero - (centena * 100) - (decena * 10)) < S) {
+					nuevonumero = (nuevonumero * 10) + unidad;
+					bandera = true;
+				}
+				
+				if (bandera)
+					NuevaLista.add(0, nuevonumero);
 			}
 		}
 		
