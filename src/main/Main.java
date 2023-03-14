@@ -12,7 +12,7 @@ public class Main {
 	*/
 	
 	public static void main(String[] args) {
-		final int S = 6;
+		final int S = 7;
 		Integer[] array = {60, 6, 5, 4, 3, 2, 7, 7, 29, 1};
 		List<Integer> lista = Arrays.asList(array);
 		
