@@ -12,8 +12,8 @@ public class Main {
 	*/
 	
 	public static void main(String[] args) {
-		final int S = 7;
-		Integer[] array = {9, 1, 2, 3, 4, 5, 6, 7, 8, 100, 150};
+		final int S = 6;
+		Integer[] array = {60, 6, 5, 4, 3, 2, 7, 7, 29, 1};
 		List<Integer> lista = Arrays.asList(array);
 		
 		O(lista, S);
@@ -21,28 +21,22 @@ public class Main {
 
 	private static void O(List<Integer> lista, int S) {
 		List<Integer> NuevaLista = new ArrayList<>();
+		String str_numero;
+		Boolean bandera;
+		int nuevonumero;
+		int digito;
 		
 		for (Integer numero : lista) {
 			if (numero <= 100) {
-				boolean bandera = false;
-				int nuevonumero = 0;
-				int centena;
-				int decena;
-				int unidad;
+				str_numero = String.valueOf(numero);
+				bandera = false;
+				nuevonumero = 0;
 				
-				if ((centena = numero / 100) < S) {
-					nuevonumero = centena;
-					bandera = true;
-				}
-					
-				if ((decena = (numero - (centena * 100)) / 10) < S) {
-					nuevonumero = (nuevonumero * 10) + decena;
-					bandera = true;
-				}
-				
-				if ((unidad = numero - (centena * 100) - (decena * 10)) < S) {
-					nuevonumero = (nuevonumero * 10) + unidad;
-					bandera = true;
+				for (char digito_char : str_numero.toCharArray()) {
+					if ((digito = Character.getNumericValue(digito_char)) < S) {
+						nuevonumero = nuevonumero * 10 + digito;
+						bandera = true;
+					}
 				}
 				
 				if (bandera)
