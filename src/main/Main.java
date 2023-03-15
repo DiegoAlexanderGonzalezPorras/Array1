@@ -13,10 +13,14 @@ public class Main {
 
 	public static void main(String[] args) {
 		final int S = 7;
-		Integer[] array = { 70, 7, 5, 4, 3, 2, 7, 7, 29, 1 };
-		List<Integer> lista = Arrays.asList(array);
+		Integer[] array1 = { 70, 7, 5, 4, 3, 2, 7, 7, 29, 1 };
+		List<Integer> lista1 = Arrays.asList(array1);
+		
+		Integer[] array2 = { -2, -1, 0, 1, 2};
+		List<Integer> lista2 = Arrays.asList(array2);
 
-		O(lista, S);
+		O(lista1, S);
+		Cuadrados(lista2, S);
 	}
 
 	private static void O(List<Integer> lista, int S) {
@@ -45,5 +49,42 @@ public class Main {
 			}
 		}
 		System.out.println(NuevaLista);
+	}
+	
+	private static void Cuadrados(List<Integer> lista, int S) {
+		List<Integer> ListaOrdenada = new ArrayList<>();
+		List<Integer> NuevaLista = new ArrayList<>();
+		int limite = (int) Math.sqrt(S *10 + S);
+		
+		int cuadrado;
+		
+		if (lista.get(0) < 0) {
+			boolean Primernegativo = false;
+			for (int i = lista.size()-1; i >= 0; i--) {
+				if (lista.get(i) < 0) {
+					if (!Primernegativo) {
+						ListaOrdenada.addAll(lista.subList(i + 1, lista.size()));
+						Primernegativo = true;
+					}
+					int numero = lista.get(i)*-1;
+					for (int j = 0; j < ListaOrdenada.size(); j++) {
+						if (numero <= ListaOrdenada.get(j)) {
+							ListaOrdenada.add(j, numero);
+							break;
+						}
+					}
+				}
+			}
+		}else
+			ListaOrdenada = lista;
+			
+			
+		for (Integer numero: lista) {
+			cuadrado = (int)Math.pow(numero, 2);
+			if (cuadrado <= limite)
+				NuevaLista.add(cuadrado);
+		}
+		
+		System.out.println(ListaOrdenada);
 	}
 }
