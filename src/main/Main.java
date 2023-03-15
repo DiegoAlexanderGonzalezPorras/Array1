@@ -6,16 +6,16 @@ import java.util.List;
 
 public class Main {
 	/*
-	Diego Gonzalez Porras
-	MD5 Hash => 717849f2ea20194146d2ed2a8a9e3df7
-	S => 7
-	*/
-	
+	 * Diego Gonzalez Porras 
+	 * MD5 Hash => 717849f2ea20194146d2ed2a8a9e3df7 
+	 * S => 7
+	 */
+
 	public static void main(String[] args) {
 		final int S = 7;
-		Integer[] array = {60, 6, 5, 4, 3, 2, 7, 7, 29, 1};
+		Integer[] array = { 70, 7, 5, 4, 3, 2, 7, 7, 29, 1 };
 		List<Integer> lista = Arrays.asList(array);
-		
+
 		O(lista, S);
 	}
 
@@ -25,25 +25,25 @@ public class Main {
 		Boolean bandera;
 		int nuevonumero;
 		int digito;
-		
+
 		for (Integer numero : lista) {
-			if (numero <= 100) {
-				str_numero = String.valueOf(numero);
-				bandera = false;
-				nuevonumero = 0;
-				
-				for (char digito_char : str_numero.toCharArray()) {
-					if ((digito = Character.getNumericValue(digito_char)) < S) {
-						nuevonumero = nuevonumero * 10 + digito;
-						bandera = true;
-					}
+			str_numero = String.valueOf(numero);
+			bandera = false;
+			nuevonumero = 0;
+
+			for (char digito_char : str_numero.toCharArray()) {
+				if ((digito = Character.getNumericValue(digito_char)) < S) {
+					nuevonumero = nuevonumero * 10 + digito;
+					bandera = true;
 				}
-				
-				if (bandera)
-					NuevaLista.add(0, nuevonumero);
+			}
+
+			if (bandera) {
+				NuevaLista.add(0, nuevonumero);
+				if (NuevaLista.size() >= 100)
+					break;
 			}
 		}
-		
 		System.out.println(NuevaLista);
 	}
 }
